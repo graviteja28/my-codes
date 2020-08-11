@@ -48,14 +48,23 @@ def players_choice(board):
         position=int(input("Enter next position :"))
     return position
 def replay():
-    return input("Do you want to play again(Y/N) :").lower().startswith('y')
+    x = input("Do you want to play again(Y/N) :")
+    if(x=='y' or x=='n' or x=='Y' or x=='N'):
+        return x.lower().startswith('y')
+    else:
+        return replay()
+def play_game():
+    x = input("Are you ready to play game(Y/N) :")
+    if(x=='y' or x=='n' or x=='Y' or x=='N'):
+        return x.lower().startswith('y')
+    else:
+        return play_game()
 while True:
     board=[' ']* 10
     player1_marker,player2_marker=player_input()
     turn=choose_first()
     print(turn + " will play First")
-    play_game=input("Are you ready to play the game Y/N").lower().startswith('y')
-    if play_game:
+    if play_game():
         game_on=True
     else:
         game_on=False
@@ -87,4 +96,3 @@ while True:
                     turn="player 1"
     if not replay():
         break
-    
